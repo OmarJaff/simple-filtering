@@ -9,6 +9,7 @@
          <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 
     </head>
@@ -34,8 +35,10 @@
 
                 <div class="mt-8 flex flex-col">
                     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                        <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8 flex-col">
+                            @if($users->isNotEmpty())
                             <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+
                                 <table class="min-w-full divide-y divide-gray-300">
                                     <thead class="bg-gray-50">
                                     <tr>
@@ -67,9 +70,12 @@
 
                                     </tbody>
                                 </table>
-
-
                             </div>
+                            @else
+                            <div class="flex justify-center">
+                                <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_3qzrm0wa.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                            </div>
+                            @endif
                             <div class="py-4">
                                 {{$users->links()}}
                             </div>
